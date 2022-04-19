@@ -23,7 +23,7 @@
 
                   <div class="pt-4 pb-2">
                     <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                    <p class="text-center small">Enter your username & password to login</p>
+                    <p class="text-center small">Enter your name & password to login</p>
                   </div>
                 
                   @if ($message = Session::get('success'))
@@ -33,20 +33,20 @@
                   @endif
                
 
-                  <form class="row g-3 needs-validation" novalidate>
-
+                  <form class="row g-3 needs-validation" action="/login" method="post">
+                    @csrf
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">Username</label>
+                      <label for="name" class="form-label">Username</label>
                       <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
-                        <div class="invalid-feedback">Please enter your username.</div>
+                        {{-- <span class="input-group-text" id="inputGroupPrepend">@</span> --}}
+                        <input type="text" name="name" class="form-control" id="name" required autocomplete="off" placeholder="Enter Name here...">
+                        <div class="invalid-feedback">Please enter your name.</div>
                       </div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <label for="password" class="form-label">Password</label>
+                      <input type="password" name="password" class="form-control" id="password" required placeholder="Enter Password here...">
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 

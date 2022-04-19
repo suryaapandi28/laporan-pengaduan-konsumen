@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Login;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class loginController extends Controller
 {
@@ -37,6 +39,25 @@ class loginController extends Controller
     public function store(Request $request)
     {
         //
+    }
+    public function authenticate(Request $request)
+    {
+        $validation_login = $request->validate([
+
+            'name' => 'required',
+            'password' => 'required'
+        ]);
+
+        //For Debug
+        // var_dump($validation_login);
+        //or 
+        // dd($validation_login);
+        // die();
+        if(Auth::attempt($validation_login)){
+            $request->session()->regenerate();
+            return redirect()->intended('/dashboard');
+        }
+        return back()->with('LoginErrors','Login Failed');
     }
 
     /**

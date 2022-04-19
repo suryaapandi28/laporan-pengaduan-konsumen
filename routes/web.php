@@ -4,6 +4,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\registerController;
+use App\Http\Controllers\dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,10 @@ use App\Http\Controllers\registerController;
 // });
 
 Route::get('/login', [loginController::class, 'index']);
+Route::post('/login', [loginController::class, 'authenticate']);
+Route::get('/dashboard', [dashboard::class, 'index']);
+Route::post('/logout', [dashboard::class, 'logout']);
+
 
 
 Route::get('/register', [registerController::class, 'index']);

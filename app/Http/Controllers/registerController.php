@@ -46,7 +46,7 @@ class registerController extends Controller
         
         $validaasi = $request->validate([
 
-            'name' => 'required|min:5',
+            'name' => 'required|unique:Users',
             // 'email' => 'required|email:rfc,dns|unique:Users',
             'email' => 'required|unique:Users',
             'password' => 'required|min:5',
