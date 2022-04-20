@@ -37,17 +37,29 @@
                     @csrf
                     <div class="col-12">
                       <label for="name" class="form-label">Username</label>
-                      <div class="input-group has-validation">
+                      <div class="input-group">
                         {{-- <span class="input-group-text" id="inputGroupPrepend">@</span> --}}
-                        <input type="text" name="name" class="form-control" id="name" required autocomplete="off" placeholder="Enter Name here...">
+                        <input type="text" name="name" class="form-control form-control rounded-top @error('name') is-invalid @enderror" id="name"  autocomplete="off" placeholder="Enter Name here..." value="{{ old('name') }}">
                         <div class="invalid-feedback">Please enter your name.</div>
+                        @error('name')    
+                        <div class="invalid-feedback">
+                          {{ $message }}
+                        </div>
+                        @enderror
                       </div>
+                      
                     </div>
 
                     <div class="col-12">
                       <label for="password" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="password" required placeholder="Enter Password here...">
+                      <input type="password" name="password" class="form-control rounded-top @error('password') is-invalid @enderror" id="password"  placeholder="Enter Password here..." >
                       <div class="invalid-feedback">Please enter your password!</div>
+
+                      @error('password')    
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                      @enderror
                     </div>
 
                     

@@ -22,8 +22,8 @@ use App\Http\Controllers\dashboard;
 // });
 
 Route::get('/login', [loginController::class, 'index']);
-Route::post('/login', [loginController::class, 'authenticate']);
-Route::get('/dashboard', [dashboard::class, 'index']);
+Route::post('/login', [loginController::class, 'authenticate'])->name('login')->middleware('guest');
+Route::get('/dashboard', [dashboard::class, 'index'])->middleware('auth');
 Route::post('/logout', [dashboard::class, 'logout']);
 
 
