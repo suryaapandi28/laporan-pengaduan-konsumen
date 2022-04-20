@@ -11,7 +11,9 @@ class dashboard extends Controller
     //
     public function index()
     {
-        return view('admin.dashboard_admin');
+        return view('admin.dashboard_admin',[
+            'nama_dashboard' => 'Dashboard'
+        ]);
     }
     
     public function logout(Request $request)

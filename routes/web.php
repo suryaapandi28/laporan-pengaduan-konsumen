@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\dashboard;
+use App\Http\Controllers\laporanPelangganController;
+use App\Http\Controllers\laporanTeknisiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +26,9 @@ use App\Http\Controllers\dashboard;
 Route::get('/login', [loginController::class, 'index']);
 Route::post('/login', [loginController::class, 'authenticate'])->name('login')->middleware('guest');
 Route::get('/dashboard', [dashboard::class, 'index'])->middleware('auth');
+Route::get('/laporan', [laporanPelangganController::class, 'index'])->middleware('auth');
+Route::get('/teknisiLaporan', [laporanTeknisiController::class, 'index'])->middleware('auth');
+
 Route::post('/logout', [dashboard::class, 'logout']);
 
 
