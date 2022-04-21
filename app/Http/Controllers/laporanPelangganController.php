@@ -15,6 +15,8 @@ class laporanPelangganController extends Controller
     public function index()
     {
         //
+        
+      $this->authorize('admin');
         return view('admin.laporan_pelanggan', [
             'nama_dashboard' => 'Data Pelanggan Laporan'
         ]);

@@ -16,7 +16,7 @@ class dashboard extends Controller
         ]);
     }
     
-    public function logout(Request $request)
+    public function store(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();

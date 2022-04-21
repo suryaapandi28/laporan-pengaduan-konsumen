@@ -26,12 +26,12 @@ use App\Http\Controllers\laporanTeknisiController;
 Route::get('/login', [loginController::class, 'index']);
 Route::post('/login', [loginController::class, 'authenticate'])->name('login')->middleware('guest');
 Route::get('/dashboard', [dashboard::class, 'index'])->middleware('auth');
-Route::get('/laporan', [laporanPelangganController::class, 'index'])->middleware('auth');
-Route::get('/teknisiLaporan', [laporanTeknisiController::class, 'index'])->middleware('auth');
+Route::resource('/laporan', laporanPelangganController::class);
+Route::get('/teknisiLaporan', [laporanTeknisiController::class, 'index']);
 
-Route::post('/logout', [dashboard::class, 'logout']);
+// Route::post('/logout', [dashboard::class, 'logout']);
 
-
+Route::resource('/logout', dashboard::class);
 
 Route::get('/register', [registerController::class, 'index']);
 Route::post('/register', [registerController::class, 'store']);

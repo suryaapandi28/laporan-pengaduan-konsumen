@@ -10,14 +10,18 @@
         </a>
       </li><!-- End Dashboard Nav -->
 
+      @can('admin')
+          
       <li class="nav-item">
         <a class="nav-link " href="/laporan">
           <i class="bi bi-grid"></i>
           <span>Data Pelanggan Laporan</span>
         </a>
       </li><!-- End Dashboard Nav -->
+      @endcan
+      
       <li class="nav-item">
-        <a class="nav-link " href="/teknisiLaporan">
+        <a class="nav-link" href="/teknisiLaporan">
           <i class="bi bi-grid"></i>
           <span>Data Laporan Teknisi</span>
         </a>

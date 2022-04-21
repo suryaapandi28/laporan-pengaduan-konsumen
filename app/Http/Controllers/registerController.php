@@ -50,6 +50,7 @@ class registerController extends Controller
             // 'email' => 'required|email:rfc,dns|unique:Users',
             'email' => 'required|unique:Users',
             'password' => 'required|min:5',
+            'is_admin' => 'required',
 
 
             //insert Data
@@ -63,6 +64,7 @@ class registerController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
+        $user->is_admin = $request->is_admin;
 
         $user->save();
 

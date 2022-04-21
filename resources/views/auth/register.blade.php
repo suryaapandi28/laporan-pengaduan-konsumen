@@ -55,6 +55,13 @@
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 
+                    <div class="input-group mb-3">
+                      <select class="form-select" name="is_admin" id="is_admin">
+                        <option value="1">admin</option>
+                        <option value="2">teknisi</option>
+                      </select>
+                    </div>
+
                   
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">Create Account</button>

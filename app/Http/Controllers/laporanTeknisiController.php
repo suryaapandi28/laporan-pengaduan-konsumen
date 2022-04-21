@@ -15,6 +15,7 @@ class laporanTeknisiController extends Controller
     public function index()
     {
         //
+     
         return view('admin.laporan_teknisi' , [
             'nama_dashboard' => 'Laporan Teknisi'
         ]);
