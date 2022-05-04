@@ -18,6 +18,7 @@ class laporanTeknisiController extends Controller
         return view('admin.laporan_teknisi' , [
             'nama_dashboard' => 'Laporan Teknisi'
         ]);
+        
     }
 
     /**
