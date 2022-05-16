@@ -10,22 +10,79 @@
         </a>
       </li><!-- End Dashboard Nav -->
 
-      @can('admin')
-          
+      {{-- @can('admin') --}}
+        
+     
+      </li>
+
+      {{-- Menu Administrator --}}
+      @if (auth()->user()->level === 'administrator')
       <li class="nav-item">
         <a class="nav-link " href="/laporan">
           <i class="bi bi-grid"></i>
           <span>Data Pelanggan Laporan</span>
         </a>
-      </li><!-- End Dashboard Nav -->
-      @endcan
+      </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/teknisiLaporan">
+              <i class="bi bi-grid"></i>
+              <span>Data Laporan Teknisi</span>
+            </a>
+          </li>
       
+          <li class="nav-item">
+            <a class="nav-link" href="">
+              <i class="bi bi-grid"></i>
+              <span>Data Laporan pengajuan</span>
+            </a>
+          </li>
+
+      @endif
+
+        {{-- Menu Admin --}}
+      @if (auth()->user()->level === 'admin')
+
       <li class="nav-item">
         <a class="nav-link" href="/teknisiLaporan">
           <i class="bi bi-grid"></i>
           <span>Data Laporan Teknisi</span>
         </a>
-      </li><!-- End Dashboard Nav -->
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="">
+          <i class="bi bi-grid"></i>
+          <span>Data Laporan pengajuan</span>
+        </a>
+      </li>
+      
+      @endif
+
+      {{-- Menu Teknisi --}}
+      @if (auth()->user()->level === 'teknisi')
+
+      <li class="nav-item">
+        <a class="nav-link" href="/teknisiLaporan">
+          <i class="bi bi-grid"></i>
+          <span>Data Laporan Teknisi</span>
+        </a>
+      </li>
+      @endif
+      <!-- End Dashboard Nav -->
+      {{-- @endcan
+
+      
+      @can('admin') --}}
+          
+      {{-- <li class="nav-item">
+        <a class="nav-link " href="/laporan">
+          <i class="bi bi-grid"></i>
+          <span>Data admin</span>
+        </a>
+      </li><!-- End Dashboard Nav --> --}}
+      {{-- @endcan --}}
+      
+<!-- End Dashboard Nav -->
 
       {{-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">

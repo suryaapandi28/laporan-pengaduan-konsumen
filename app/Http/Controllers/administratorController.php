@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Laporan;
+use App\Models\Administrator;
 use Illuminate\Http\Request;
 
-class laporanPelangganController extends Controller
+class administratorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,7 @@ class laporanPelangganController extends Controller
     {
         //
         
-    //   $this->authorize('admin');
-        return view('admin.laporan_pelanggan', [
+        return view('admin.administrator', [
             'nama_dashboard' => 'Data Pelanggan Laporan'
         ]);
     }
@@ -46,10 +45,10 @@ class laporanPelangganController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Laporan  $laporan
+     * @param  \App\Models\Administrator  $administrator
      * @return \Illuminate\Http\Response
      */
-    public function show(Laporan $laporan)
+    public function show(Administrator $administrator)
     {
         //
     }
@@ -57,10 +56,10 @@ class laporanPelangganController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Laporan  $laporan
+     * @param  \App\Models\Administrator  $administrator
      * @return \Illuminate\Http\Response
      */
-    public function edit(Laporan $laporan)
+    public function edit(Administrator $administrator)
     {
         //
     }
@@ -69,10 +68,10 @@ class laporanPelangganController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Laporan  $laporan
+     * @param  \App\Models\Administrator  $administrator
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Laporan $laporan)
+    public function update(Request $request, Administrator $administrator)
     {
         //
     }
@@ -80,10 +79,10 @@ class laporanPelangganController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Laporan  $laporan
+     * @param  \App\Models\Administrator  $administrator
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Laporan $laporan)
+    public function destroy(Administrator $administrator)
     {
         //
     }

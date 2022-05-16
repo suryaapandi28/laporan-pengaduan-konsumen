@@ -56,9 +56,10 @@
                     </div>
 
                     <div class="input-group mb-3">
-                      <select class="form-select" name="is_admin" id="is_admin">
-                        <option value="1">admin</option>
-                        <option value="2">teknisi</option>
+                      <select class="form-select" name="level" id="level">
+                        <option value="administrator">admin</option>
+                        <option value="admin">admin-Input</option>
+                        <option value="teknisi">teknisi</option>
                       </select>
                     </div>
 

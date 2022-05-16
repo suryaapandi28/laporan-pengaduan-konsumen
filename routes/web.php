@@ -27,8 +27,24 @@ Route::get('/login', [loginController::class, 'index']);
 
 Route::post('/login', [loginController::class, 'authenticate'])->name('login')->middleware('guest');
 Route::get('/dashboard', [dashboard::class, 'index'])->middleware('auth');
-Route::resource('/laporan', laporanPelangganController::class);
-Route::get('/teknisiLaporan', [laporanTeknisiController::class, 'index']);
+
+// Route Administratot mengatur segala hal 
+Route::group(['middleware' => ['auth','CekLevel:administrator']] , function() {
+    Route::resource('/laporan', laporanPelangganController::class);
+    Route::get('/teknisiLaporan', [laporanTeknisiController::class, 'index']);
+});
+
+// Route admin - input cuman mengakses laporan teknisi dan pengajuan 
+Route::group(['middleware' => ['auth','CekLevel:admin,administrator']] , function() {
+    Route::get('/teknisiLaporan', [laporanTeknisiController::class, 'index']);
+});
+
+// Route teknisi cuman mengakses laporan teknisi
+Route::group(['middleware' => ['auth','CekLevel:teknisi,admin,administrator']] , function() {
+    Route::get('/teknisiLaporan', [laporanTeknisiController::class, 'index']);
+});
+
+
 
 // Route::post('/logout', [dashboard::class, 'logout']);
 

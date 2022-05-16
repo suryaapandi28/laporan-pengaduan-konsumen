@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class isAdmin
+class CekLevel
 {
     /**
      * Handle an incoming request.
@@ -14,18 +14,12 @@ class isAdmin
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle($request, Closure $next, ...$is_admins)
+    public function handle( $request, Closure $next, ...$levels)
     {
-        // if(!auth()->check() || !auth()->user()->is_admin === '1' && !auth()->user()->is_admin === '3'){
-        //     abort(403);
-        // }
-
-        // if(is_array($request->user()->is_admin)){
-
-        //     return $next($request);
-        // }
-        // return redirect('/login');
-        abort(403);
-
+        if(in_array($request->user()->level, $levels)){
+            
+            return $next($request);
+        }
+        return abort(403);
     }
 }
