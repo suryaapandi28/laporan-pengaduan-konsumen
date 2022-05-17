@@ -30,6 +30,9 @@ class laporanPelangganController extends Controller
     public function create()
     {
         //
+        return view('admin.tambah_laporan',[
+            'nama_dashboard' => 'Tambah Data Laporan'
+        ]);
     }
 
     /**

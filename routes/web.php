@@ -28,10 +28,13 @@ Route::get('/login', [loginController::class, 'index']);
 Route::post('/login', [loginController::class, 'authenticate'])->name('login')->middleware('guest');
 Route::get('/dashboard', [dashboard::class, 'index'])->middleware('auth');
 
-// Route Administratot mengatur segala hal 
+// Route Administrator mengatur segala hal 
 Route::group(['middleware' => ['auth','CekLevel:administrator']] , function() {
     Route::resource('/laporan', laporanPelangganController::class);
+    Route::get('/tambah_laporan', [laporanPelangganController::class, 'create'])->middleware('auth');
     Route::get('/teknisiLaporan', [laporanTeknisiController::class, 'index']);
+
+
 });
 
 // Route admin - input cuman mengakses laporan teknisi dan pengajuan 
