@@ -8,6 +8,7 @@ use App\Http\Controllers\dashboard;
 use App\Http\Controllers\laporanPelangganController;
 use App\Http\Controllers\laporanTeknisiController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,7 +31,9 @@ Route::get('/dashboard', [dashboard::class, 'index'])->middleware('auth');
 
 // Route Administrator mengatur segala hal 
 Route::group(['middleware' => ['auth','CekLevel:administrator']] , function() {
-    Route::resource('/laporan', laporanPelangganController::class);
+  
+    Route::post('/laporan', [laporanPelangganController::class, 'store']);
+    Route::get('/laporan', [laporanPelangganController::class, 'index']);
     Route::get('/tambah_laporan', [laporanPelangganController::class, 'create'])->middleware('auth');
     Route::get('/teknisiLaporan', [laporanTeknisiController::class, 'index']);
 

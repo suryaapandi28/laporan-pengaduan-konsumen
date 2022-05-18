@@ -31,18 +31,18 @@
             </a>
           </li>
       
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a class="nav-link" href="">
               <i class="bi bi-grid"></i>
               <span>Data Laporan pengajuan</span>
             </a>
-          </li>
-          <li class="nav-item">
+          </li> --}}
+          {{-- <li class="nav-item">
             <a class="nav-link" href="">
               <i class="bi bi-grid"></i>
-              <span>Data Laporan pengajuan</span>
+              <span>Data Laporan </span>
             </a>
-          </li>
+          </li> --}}
           
 
       @endif
