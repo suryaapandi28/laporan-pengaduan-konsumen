@@ -16,7 +16,7 @@ class administratorController extends Controller
     {
         //
         
-        return view('admin.administrator', [
+        return view('admin.dashboard_admin', [
             'nama_dashboard' => 'Data Pelanggan Laporan'
         ]);
     }
@@ -29,6 +29,9 @@ class administratorController extends Controller
     public function create()
     {
         //
+        return view('admin.data_user',[
+            'nama_dashboard' => 'Data User Pengguna'
+        ]);
     }
 
     /**

@@ -1,7 +1,7 @@
 @extends('layouts.main_admin')
 
 @section('container')
-<table class="table table-striped">
+<table class="table table-bordered">
 
 
   

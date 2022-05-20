@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\administratorController;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginController;
@@ -31,7 +32,10 @@ Route::get('/dashboard', [dashboard::class, 'index'])->middleware('auth');
 
 // Route Administrator mengatur segala hal 
 Route::group(['middleware' => ['auth','CekLevel:administrator']] , function() {
-  
+    
+    Route::get('/tambahUser',[administratorController::class, 'index']);
+    Route::get('/tambah_user',[administratorController::class, 'create']);
+
     Route::post('/laporan', [laporanPelangganController::class, 'store']);
     Route::get('/laporan', [laporanPelangganController::class, 'index']);
     Route::get('/tambah_laporan', [laporanPelangganController::class, 'create'])->middleware('auth');
