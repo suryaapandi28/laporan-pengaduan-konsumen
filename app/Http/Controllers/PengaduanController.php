@@ -29,13 +29,14 @@ class PengaduanController extends Controller
         //
         $data = [
             'kode_pengaduan' => "PGN".date("Ymdhis"),
-            'nomer_pengaduan' => "id".date("Ymd").rand(1,99999),
+            'nomer_pengaduan' => "0",
             'nama_pelapor' => $request->input('nama_pelapor'),
             'alamat_pelapor' => $request->input('alamat_pelapor'),
             'notlp_pelapor'=> $request->input('notlp_pelapor'),
             'alamat_email_pelapor' => $request->input('alamat_email_pelapor'),
             'keluhan_pelapor' => $request->input('keluhan_pelapor'),
             'pekerjaan_pelapor' => $request->input('pekerjaan_pelapor'),
+            'status_laporan' => "belum_veritifikasi",
         ];
         
         $validator = Validator::make($data, [

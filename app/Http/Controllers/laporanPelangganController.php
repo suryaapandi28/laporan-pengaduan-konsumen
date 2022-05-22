@@ -21,11 +21,16 @@ class laporanPelangganController extends Controller
     {
         //
         
-    //   $this->authorize('admin');
-        return view('admin.laporan_pelanggan', [
-            'nama_dashboard' => 'Data Pelanggan Laporan',
-            'Laporan' => Pengaduan::all(),
-        ]);
+    // //   $this->authorize('admin');
+    //     return view('admin.laporan_pelanggan', [
+    //         'nama_dashboard' => 'Data Pelanggan Laporan',
+    //         'Laporan' => Pengaduan::all(),
+    //     ]);
+
+        $laporan = pengaduan::all();
+        return view('admin.laporan_pelanggan', compact('laporan'),[
+            'nama_dashboard' => 'Data Pelanggan Laporan']);
+
     }
 
     /**
@@ -131,6 +136,10 @@ class laporanPelangganController extends Controller
     public function edit(Laporan $laporan)
     {
         //
+        return view('admin.statuslaporan',[
+            'nama_dashboard' => 'Tambah Data Laporan',
+            
+        ],compact('laporan'));
     }
 
     /**
@@ -153,6 +162,8 @@ class laporanPelangganController extends Controller
      */
     public function destroy(Laporan $laporan)
     {
-        //
+        $laporan->delete();
+
+        return redirect()->route('laporan.index')->with('succes','pengaduan Berhasil di Hapus');
     }
 }

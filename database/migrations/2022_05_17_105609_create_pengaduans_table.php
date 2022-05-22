@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('alamat_email_pelapor');
             $table->string('keluhan_pelapor');
             $table->string('pekerjaan_pelapor');
+            $table->enum('status_laporan',['belum_veritifikasi','terveritifikasi','maintance','selesai']);
             $table->timestamps();
         });
     }

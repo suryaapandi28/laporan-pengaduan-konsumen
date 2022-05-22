@@ -19,9 +19,13 @@ class administratorController extends Controller
     {
         //
         
-        return view('admin.dashboard_admin', [
-            'nama_dashboard' => 'Data Pelanggan Pengguna'
-        ]);
+        // return view('admin.dashboard_admin', [
+        //     'nama_dashboard' => 'Data Pelanggan Pengguna'
+        // ]);
+
+        $admin = Administrator::all();
+        return view('admin.dashboard_admin', compact('admin'),[
+            'nama_dashboard' => 'Data User Admin']);
     }
  
     /**
@@ -115,6 +119,6 @@ class administratorController extends Controller
      */
     public function destroy(Administrator $administrator)
     {
-        //
+    
     }
 }
