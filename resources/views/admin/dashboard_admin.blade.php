@@ -1,7 +1,13 @@
 @extends('layouts.main_admin')
 
 @section('container')
-{{-- <a href="tambah_user" class="btn btn-primary mb-3">tambah Data User</a>
+<a href="tambah_user" class="btn btn-primary mb-3">tambah Data User</a>
+
+@if ($message = Session::get('success'))
+<div class="alert alert-success" role="alert">
+ Data Berhasil Ditambahkan
+</div>
+@endif
 <table class="table table-striped">
     <tr>
         <td>Name</td>
@@ -18,6 +24,6 @@
             <a href="" class="badge bg-danger">Hapus</a>
         </td>
     </tr>
-</table> --}}
+</table>
 
 @endsection

@@ -6,7 +6,7 @@
       Form Tambah Pengaduan
     </div>
     <div class="card-body">
-        <form action="/laporan" method="POST">
+        <form action="/laporan" method="POST" enctype="multipart/form-data">
           @csrf
             <div class="mb-3">
               <label for="nama_pelapor" class="form-label">Nama Pelapor</label>

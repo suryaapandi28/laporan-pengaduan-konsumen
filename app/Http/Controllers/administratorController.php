@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Administrator;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Administrator;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class administratorController extends Controller
 {
@@ -17,10 +20,10 @@ class administratorController extends Controller
         //
         
         return view('admin.dashboard_admin', [
-            'nama_dashboard' => 'Data Pelanggan Laporan'
+            'nama_dashboard' => 'Data Pelanggan Pengguna'
         ]);
     }
-
+ 
     /**
      * Show the form for creating a new resource.
      *
@@ -43,6 +46,31 @@ class administratorController extends Controller
     public function store(Request $request)
     {
         //
+        ddd($request);
+        $validaasi = $request->validate([
+
+            'name' => 'required|unique:Users',
+            // 'email' => 'required|email:rfc,dns|unique:Users',
+            'email' => 'required|unique:Users',
+            'password' => 'required|min:5', 
+            'level' => 'required',
+
+
+            //insert Data
+            
+        ]);
+         // for Debug
+        // var_dump($validaasi);
+        // die();
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->level = $request->level;
+
+        $user->save();
+
+        return redirect('/tambahUser')->with(['success' => 'Data telah Ditambahkan']);
     }
 
     /**

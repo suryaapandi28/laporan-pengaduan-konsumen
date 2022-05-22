@@ -12,7 +12,7 @@ class dashboard extends Controller
     //
     public function index()
     {
-        return view('admin.dashboard_admin',[
+        return view('admin.admin_dashboard',[
             'nama_dashboard' => 'Dashboard',
         ]);
     }
