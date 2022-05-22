@@ -63,4 +63,5 @@ Route::resource('/logout', dashboard::class);
 
 Route::get('/register', [registerController::class, 'index']);
 Route::post('/register', [registerController::class, 'store']);
+Route::resource('pengaduan', PengaduanController::class);
 
