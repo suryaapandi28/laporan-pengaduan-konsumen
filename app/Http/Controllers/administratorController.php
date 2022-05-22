@@ -46,7 +46,8 @@ class administratorController extends Controller
     public function store(Request $request)
     {
         //
-        ddd($request);
+        // return $request->file('image')->store('post-image');
+        // ddd($request);
         $validaasi = $request->validate([
 
             'name' => 'required|unique:Users',
