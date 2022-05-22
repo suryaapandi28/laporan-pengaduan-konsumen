@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\administratorController;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\dashboard;
 use App\Http\Controllers\laporanPelangganController;
 use App\Http\Controllers\laporanTeknisiController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,10 +30,19 @@ Route::get('/login', [loginController::class, 'index']);
 Route::post('/login', [loginController::class, 'authenticate'])->name('login')->middleware('guest');
 Route::get('/dashboard', [dashboard::class, 'index'])->middleware('auth');
 
-// Route Administratot mengatur segala hal 
+// Route Administrator mengatur segala hal 
 Route::group(['middleware' => ['auth','CekLevel:administrator']] , function() {
-    Route::resource('/laporan', laporanPelangganController::class);
+    
+    Route::get('/tambahUser',[administratorController::class, 'index']);
+    Route::post('/tambahUser',[administratorController::class, 'store']);
+    Route::get('/tambah_user',[administratorController::class, 'create']);
+
+    Route::post('/laporan', [laporanPelangganController::class, 'store']);
+    Route::get('/laporan', [laporanPelangganController::class, 'index']);
+    Route::get('/tambah_laporan', [laporanPelangganController::class, 'create'])->middleware('auth');
     Route::get('/teknisiLaporan', [laporanTeknisiController::class, 'index']);
+
+
 });
 
 // Route admin - input cuman mengakses laporan teknisi dan pengajuan 

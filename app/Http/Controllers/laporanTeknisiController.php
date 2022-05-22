@@ -15,7 +15,7 @@ class laporanTeknisiController extends Controller
     public function index()
     {
         //
-        return view('admin.laporan_teknisi' , [
+        return view('teknisi.laporan_teknisi' , [
             'nama_dashboard' => 'Laporan Teknisi'
         ]);
         
@@ -39,7 +39,7 @@ class laporanTeknisiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
     }
 
     /**

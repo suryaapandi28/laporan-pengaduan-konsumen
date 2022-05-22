@@ -5,7 +5,7 @@
 
       <li class="nav-item">
         <a class="nav-link " href="/dashboard">
-          <i class="bi bi-grid"></i>
+          <i class="bi bi-house-door"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
@@ -19,24 +19,37 @@
       @if (auth()->user()->level === 'administrator')
       <li class="nav-item">
         <a class="nav-link " href="/laporan">
-          <i class="bi bi-grid"></i>
+          <i class="bi bi-journal-text"></i>
           <span>Data Pelanggan Laporan</span>
         </a>
       </li>
 
           <li class="nav-item">
             <a class="nav-link" href="/teknisiLaporan">
-              <i class="bi bi-grid"></i>
+              <i class="bi bi-file-text"></i>
               <span>Data Laporan Teknisi</span>
             </a>
           </li>
-      
           <li class="nav-item">
+            <a class="nav-link" href="/tambahUser">
+              <i class="bi bi-people"></i>
+              <span>Data User</span>
+            </a>
+          </li>
+      
+          {{-- <li class="nav-item">
             <a class="nav-link" href="">
               <i class="bi bi-grid"></i>
               <span>Data Laporan pengajuan</span>
             </a>
-          </li>
+          </li> --}}
+          {{-- <li class="nav-item">
+            <a class="nav-link" href="">
+              <i class="bi bi-grid"></i>
+              <span>Data Laporan </span>
+            </a>
+          </li> --}}
+          
 
       @endif
 
