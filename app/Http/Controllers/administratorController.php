@@ -71,6 +71,7 @@ class administratorController extends Controller
         ]);
     $image = $request->file('image');
 	$nama_image = time()."_".$image->getClientOriginalName();
+    // nama arah folder dan tujuannya 
 	$tujuan_upload = 'data_file';
 	$image->move($tujuan_upload,$nama_image);
       	// isi dengan nama folder tempat kemana image diupload
