@@ -9,6 +9,7 @@ use App\Http\Controllers\dashboard;
 use App\Http\Controllers\laporanPelangganController;
 use App\Http\Controllers\laporanTeknisiController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\PengaduanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,9 +38,11 @@ Route::group(['middleware' => ['auth','CekLevel:administrator']] , function() {
     Route::post('/tambahUser',[administratorController::class, 'store']);
     Route::get('/tambah_user',[administratorController::class, 'create']);
 
-    Route::post('/laporan', [laporanPelangganController::class, 'store']);
-    Route::get('/laporan', [laporanPelangganController::class, 'index']);
+    // Route::post('/laporan', [laporanPelangganController::class, 'store']);
+    // Route::get('/laporan', [laporanPelangganController::class, 'index']);
+    Route::resource('laporan', laporanPelangganController::class);
     Route::get('/tambah_laporan', [laporanPelangganController::class, 'create'])->middleware('auth');
+    Route::put('/editstatus', [laporanPelangganController::class, 'create'])->middleware('auth');
     Route::get('/teknisiLaporan', [laporanTeknisiController::class, 'index']);
 
 
@@ -63,4 +66,5 @@ Route::resource('/logout', dashboard::class);
 
 Route::get('/register', [registerController::class, 'index']);
 Route::post('/register', [registerController::class, 'store']);
+Route::resource('pengaduan', PengaduanController::class);
 
