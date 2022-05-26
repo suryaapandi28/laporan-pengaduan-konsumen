@@ -35,6 +35,9 @@ Route::get('/dashboard', [dashboard::class, 'index'])->middleware('auth');
 Route::group(['middleware' => ['auth','CekLevel:administrator']] , function() {
     
     Route::get('/tambahUser',[administratorController::class, 'index']);
+    Route::get('/tambahUser/destroy{id}',[administratorController::class, 'destroy']);
+    Route::get('/tambahUser/edit{id}',[administratorController::class, 'edit']);
+    // Route::get('/detail_user',[administratorController::class, 'show']);
     Route::post('/tambahUser',[administratorController::class, 'store']);
     Route::get('/tambah_user',[administratorController::class, 'create']);
 

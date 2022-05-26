@@ -1,16 +1,16 @@
 @extends('layouts.main_admin')
-
 @section('container')
 <div class="card">
     <div class="card-header text-center">
-      Form Tambah Data User
+      Form Edit Data User
     </div>
     <div class="card-body">
         <form action="/tambahUser" method="POST" enctype="multipart/form-data">
           @csrf
             <div class="mb-3">
               <label for="name" class="form-label">Name</label>
-              <input type="name" class="form-control @error('name') is-invalid @enderror" id="name" name="name">
+              <input type="name" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
+              value="{{ $admin->name }}">
               {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
               @error('name')    
               <div class="invalid-feedback">
@@ -21,7 +21,7 @@
 
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
+              <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email', $admin->email) }}">
 
               @error('email')    
               <div class="invalid-feedback">
@@ -31,9 +31,9 @@
             </div>
 
             <label for="image" class="form-label">Foto Profil</label>
-            <img  class="img-preview img-fluid mb-3 col-sm-5">
             <div class="input-group mb-3">
-              <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" id="image" onchange="previewImage()"> 
+              <img src="{{ asset('/data_file/'. $admin->image) }}" class="rounded mx-auto d-block" width="100" alt="" height="100">
+              <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" id="image"> 
               @error('image')    
               <div class="invalid-feedback">
                 {{ $message }}
@@ -78,23 +78,4 @@
           </form>
     </div>
   </div>
-
-
-  <script>
-
-    function previewImage(){
-      const image = document.querySelector('#image');
-      const imgPreview = document.querySelector('.img-preview');
-
-      imgPreview.style.display = 'block';
-
-      const oFReader = new FileReader();
-      oFReader.readAsDataURL(image.files[0]);
-
-      oFReader.onload = function(oFREvent){
-        imgPreview.src = oFREvent.target.result;
-      }
-    }
-
-  </script>
 @endsection
