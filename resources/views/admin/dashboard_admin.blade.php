@@ -37,7 +37,7 @@
 
                    <!-- <a class="btn btn-info btn-sm" href="{{ route('laporan.show',$user->id) }}">Show</a> -->
 
-                    <a class="btn btn-primary btn-sm" href="{{ route('laporan.edit',$user->id) }}">Status</a>
+                    <a class="btn btn-primary btn-sm" href="{{ route('laporan.edit',$user->id) }}">Edit</a>
 
                     @csrf
                     @method('DELETE')

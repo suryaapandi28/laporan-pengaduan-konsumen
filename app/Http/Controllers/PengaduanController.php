@@ -48,7 +48,6 @@ class PengaduanController extends Controller
             'pekerjaan_pelapor' => 'Required',
         ]);
         $post = pengaduan::create($data);
-        // pengaduan::create($request->all());
 
         return redirect()->route('pengaduan.index')->with('succes','Data Berhasil di Input');
     }
