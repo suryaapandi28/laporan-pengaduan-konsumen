@@ -21,6 +21,7 @@
     <th scope="col">Nama Pengguna</th>
     <th scope="col">Email Pengguna</th>
     <th scope="col">Level Pengguna</th>
+    <th scope="col">Image</th>
     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
@@ -32,18 +33,24 @@
         <td>{{ $user->name }}</td>
         <td>{{ $user->email }}</td>
         <td>{{ $user->level }}</td>
+        <td><img src="{{ asset('/data_file/'. $user->image) }}" class="rounded mx-auto d-block" width="100" alt="" height="100"></td>
         <td class="text-center">
-                <form action="{{ route('laporan.destroy',$user->id) }}" method="POST">
+                {{-- <form action="/tambahUser/{{ $user->id }}" method="POST">
+                  @method('delete')
+                  @csrf --}}
 
-                   <!-- <a class="btn btn-info btn-sm" href="{{ route('laporan.show',$user->id) }}">Show</a> -->
+                    {{-- <a class="btn btn-info btn-sm" href="{{ route('dashboard') }}">Show</a>  --}}
+                    {{-- @if (!!auth()->user()->name) --}}
+                    <a class="btn btn-info btn-sm" href="tambahUser/edit{{ $user->id }}">Update</a> 
 
-                    <a class="btn btn-primary btn-sm" href="{{ route('laporan.edit',$user->id) }}">Edit</a>
-
-                    @csrf
-                    @method('DELETE')
-
-                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</button>
-                </form>
+                    {{-- <a class="btn btn-primary btn-sm" href="{{ route('laporan.edit',$user->id) }}">Status</a> --}}
+{{-- 
+                    <a href="/tambahUser/destroy{{ $user->id }}" type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</a> --}}
+                    {{-- @else --}}
+                    <a href="/tambahUser/destroy{{ $user->id }}" type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</a>
+                    {{-- @endif --}}
+                  {{-- </form>
+                </form> --}}
             </td>
       </tr>
       @empty
