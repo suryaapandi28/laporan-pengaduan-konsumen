@@ -1,28 +1,40 @@
 @extends('layouts.main_admin')
 
 @section('container')
-<table class="table table-striped">
-  
-  <h3>table Pengaduan</h3>
-  <tr>
-    <td>Kode Pengaduan</td>
-    <td>No Pengaduan</td>
-    <td>Nama Pelapor</td>
-    <td>Alamat Pelapor</td>
-    <td>No Telp Pelapor</td>
-    <td>Alamat Email pelapor</td>
-    <td>Keluhan Pelapor</td>
-    <td>pekerjaan Pelapor</td>
-  </tr>
-  <tr>
-    <td>skdjask</td>
-    <td>asdasd</td>
-    <td>asdasdasd</td>
-    <td>dasjdksad</td>
-    <td>asdjashd</td>
-    <td>sjdhasjd</td>
-    <td>skldasjdklas</td>
-    <td>asdjasd</td>
-  </tr>
-</table>
+
+<div class="card">
+            <div class="card-body">
+  <br>
+              <!-- Table with stripped rows -->
+              <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                 
+    <th scope="col">Nomer Pengaduan</th>
+    <th scope="col">Nama Pelapor</th>
+    <th scope="col">Alamat Pelapor</th>
+    <th scope="col">No Telp Pelapor</th>
+    <th scope="col">Keluhan Pelapor</th>
+    <th scope="col">Status</th>
+    <th scope="col">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody >
+      <td>ID2021052300001</td>
+      <td>Muhammad Surya Apandi	</td>
+      <td>taman tridaya sakti, kabupaten bekasi</td>
+      <td>08129879075676</td>
+      <td>wafi dirumah saya tidak dapat akses internet</td>
+      <td>Perbaikan</td>
+      <td><a class="btn btn-primary btn-sm" href="">Selesai</a></td>
+                </tbody>
+              </table>
+              </div>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+
+
 @endsection
