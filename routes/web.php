@@ -36,11 +36,21 @@ Route::group(['middleware' => ['auth','CekLevel:administrator']] , function() {
     
     Route::get('/tambahUser',[administratorController::class, 'index']);
     Route::get('/tambahUser/destroy{id}',[administratorController::class, 'destroy']);
-    Route::get('/tambahUser/edit{id}',[administratorController::class, 'edit']);
+    // Route::get('/tambahUser/edit{id}',[administratorController::class, 'edit']);
     // Route::get('/detail_user',[administratorController::class, 'show']);
+
+
+    
+    
     Route::post('/tambahUser',[administratorController::class, 'store']);
     Route::get('/tambah_user',[administratorController::class, 'create']);
-
+    
+    Route::get('/updating_users{id}', [administratorController::class, 'edit']);
+    Route::put('/updating_user{id}/update', [administratorController::class, 'update']);
+    
+    // Route::get('users/{id}', function ($id) {
+        
+    // });
     // Route::post('/laporan', [laporanPelangganController::class, 'store']);
     // Route::get('/laporan', [laporanPelangganController::class, 'index']);
     Route::resource('laporan', laporanPelangganController::class);

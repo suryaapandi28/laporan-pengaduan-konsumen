@@ -39,15 +39,17 @@
                   @method('delete')
                   @csrf --}}
 
+                  {{-- @method('PATCH') --}}
                     {{-- <a class="btn btn-info btn-sm" href="{{ route('dashboard') }}">Show</a>  --}}
                     {{-- @if (!!auth()->user()->name) --}}
-                    <a class="btn btn-info btn-sm" href="tambahUser/edit{{ $user->id }}">Update</a> 
-
+                    {{-- <a class="btn btn-info btn-sm" href="tambahUser/edit{{ $user->id }}">Update</a>  --}}
+                    
+                    <a href="/updating_users{{ $user->id }}" class="btn btn-xs btn-primary">Edit</a>
                     {{-- <a class="btn btn-primary btn-sm" href="{{ route('laporan.edit',$user->id) }}">Status</a> --}}
 {{-- 
                     <a href="/tambahUser/destroy{{ $user->id }}" type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</a> --}}
                     {{-- @else --}}
-                    <a href="/tambahUser/destroy{{ $user->id }}" type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</a>
+                    {{-- <a href="/tambahUser/destroy{{ $user->id }}" type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</a> --}}
                     {{-- @endif --}}
                   {{-- </form>
                 </form> --}}

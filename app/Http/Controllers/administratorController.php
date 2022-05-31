@@ -120,7 +120,15 @@ class administratorController extends Controller
     {
         //
         // ddd($administrator);
+      
+       
+        // dd($user);
     }
+
+    // public function updating($name)
+    // {
+       
+    // }
     
     /**
      * Show the form for editing the specified resource.
@@ -130,6 +138,16 @@ class administratorController extends Controller
      */
     public function edit($id)
     {
+
+        $user = DB::table('users')->where('id', $id)->first();
+        return view('admin.user_update', [
+            
+            'user' => $user,
+            'nama_dashboard' => 'Update Nama Dashboard',
+        ]);
+
+        
+        // $user = DB::table('users')->where('id', $id)->first();
         //
         // return view ('admin.user_update');
 
@@ -138,10 +156,14 @@ class administratorController extends Controller
       
         // $admin = Administrator::all();
         // $admins = $admin->except('administrator');
-        return view('admin.user_update',[
-            'nama_dashboard' => 'Data User Admin',
-            'admin' => Administrator::find($id)
-        ]);
+        // return view('admin.user_update',[
+        //     'nama_dashboard' => 'Data User Admin',
+        //     'admin' => Administrator::find($id)
+        // ]);
+        // return view('admin.user_update', [
+        //     'user' => $user,
+        //     'nama_dashboard' => 'Update Nama Dashboard'
+        // ]);
         // return view('admin.user_update',[
         //     'nama_dashboard' => 'Data User Admin',
         //     'admin' => Administrator::find($id),
@@ -155,9 +177,52 @@ class administratorController extends Controller
      * @param  \App\Models\Administrator  $administrator
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Administrator $administrator)
+    public function update(Request $request,$id)
     {
         //
+        $validaasi = $request->validate([
+
+            'name' => 'required|unique:Users',
+            // 'email' => 'required|email:rfc,dns|unique:Users',
+            'email' => 'required|unique:Users',
+            'password' => 'required|min:5', 
+            'image' => 'image|file|max:1024',
+            'level' => 'required',
+
+
+            //insert Data
+            
+        ]);
+        $image = $request->file('image');
+	$nama_image = time()."_".$image->getClientOriginalName();
+    // nama arah folder dan tujuannya 
+	$tujuan_upload = 'data_file';
+	$image->move($tujuan_upload,$nama_image);
+
+
+        // if($request->file('image')){
+        //     $validaasi['image'] = $request->file('image')->store('data_file');
+        // }
+        DB::table('users')->where('id', $request->id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'image' => $nama_image,
+            'level' => $request->level,
+            
+            ]);
+    // $user = new User;
+    //     $user->name = $request->name;
+    //     $user->email = $request->email;
+    //     $user->password = Hash::make($request->password);
+    //     $user->image = $nama_image;
+    //     $user->level = $request->level;
+
+
+    //     $user->where('id',$user->id)->update($id);
+
+        return redirect('/tambahUser')->with(['success' => 'Data telah Ditambahkan']);
+
     }
 
     /**
