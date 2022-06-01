@@ -133,13 +133,27 @@ class laporanPelangganController extends Controller
      * @param  \App\Models\Laporan  $laporan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Laporan $laporan)
-    {
-        //
-        return view('admin.statuslaporan',[
-            'nama_dashboard' => 'Tambah Data Laporan',
+    // public function edit(Laporan $laporan,$id)
+    // {
+    //     //
+    //     $user = DB::table('pengaduans')->where('id', $id)->first();
+    //     return view('admin.statuslaporan',[
+    //         'nama_dashboard' => 'Tambah Data Laporan',
             
-        ],compact('laporan'));
+    //     ],compact('laporan'));
+        
+    // }
+    public function edit($id)
+    {
+
+        // $user = DB::table('users')->where('id', $id)->first();
+            $id = DB::table('pengaduans')->where('id', $id)->first();
+        return view('admin.statuslaporan', [
+            
+            'id' => $id,
+            'nama_dashboard' => 'Update Nama Dashboard',
+        ]);
+
     }
 
     /**
@@ -149,9 +163,35 @@ class laporanPelangganController extends Controller
      * @param  \App\Models\Laporan  $laporan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Laporan $laporan)
+    public function update(Request $request, Laporan $laporan, $id)
     {
-        //
+    
+    
+        $validaasi = $request->validate([
+            // 'kode_pengaduan' => 'trim',
+            // 'nama_pelapor' => 'required',
+            // 'alamat_pelapor' => 'required',
+            // 'notlp_pelapor' => 'required',
+            // 'alamat_email_pelapor' => 'required',
+            // 'keluhan_pelapor' => 'required|max:100',
+            // 'pekerjaan_pelapor' => 'required',
+            'status_laporan' => 'Required',
+        ]);
+     
+        DB::table('pengaduans')->where('id', $request->id)->update([
+            // 'kode_pengaduan' => $request->kode_pengaduan,
+            // 'nomer_pengaduan' => $request->nomer_pengaduan,
+            // 'nama_pelapor' => $request->nama_pelapor,
+            // 'alamat_pelapor' => $alamat_pelapor,
+            // 'notlp_pelapor' => $request->notlp_pelapor,
+            // 'alamat_email_pelapor' => $request->alamat_email_pelapor,
+            // 'keluhan_pelapor' => $request->keluhan_pelapor,
+            // 'pekerjaan_pelapor' => $request->pekerjaan_pelapor,
+            'status_laporan' => $request->status_laporan,
+            ]);
+            return redirect('/laporan')->with(['success' => 'Data telah Ditambahkan']);
+
+
     }
 
     /**

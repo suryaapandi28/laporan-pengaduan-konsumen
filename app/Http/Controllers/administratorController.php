@@ -186,7 +186,7 @@ class administratorController extends Controller
             // 'email' => 'required|email:rfc,dns|unique:Users',
             'email' => 'required|unique:Users',
             'password' => 'required|min:5', 
-            'image' => 'image|file|max:1024',
+            'image' => 'image|file|max:5024',
             'level' => 'required',
 
 

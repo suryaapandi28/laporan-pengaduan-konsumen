@@ -46,12 +46,16 @@
         <!-- <td>{{ $laporans->alamat_email_pelapor }}</td> -->
         <td>{{ $laporans->keluhan_pelapor }}</td>
         <td>{{ $laporans->status_laporan }}</td>
+        
+        <td class="text-center">
+             
+                    <a href="/statusupdate{{ $laporans->id }}" class="btn btn-xs btn-primary">Edit</a>
+           
+            </td>
         <td class="text-center">
                 <form action="{{ route('laporan.destroy',$laporans->id) }}" method="POST">
 
                    <!-- <a class="btn btn-info btn-sm" href="{{ route('laporan.show',$laporans->id) }}">Show</a> -->
-
-                    <a class="btn btn-primary btn-sm" href="{{ route('laporan.edit',$laporans->id) }}">Status</a>
 
                     @csrf
                     @method('DELETE')

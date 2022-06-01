@@ -55,9 +55,11 @@ Route::group(['middleware' => ['auth','CekLevel:administrator']] , function() {
     // Route::get('/laporan', [laporanPelangganController::class, 'index']);
     Route::resource('laporan', laporanPelangganController::class);
     Route::get('/tambah_laporan', [laporanPelangganController::class, 'create'])->middleware('auth');
-    Route::put('/editstatus', [laporanPelangganController::class, 'create'])->middleware('auth');
-    Route::get('/teknisiLaporan', [laporanTeknisiController::class, 'index']);
+    // Route::put('/editstatus', [laporanPelangganController::class, 'create'])->middleware('auth');
+    // Route::get('/teknisiLaporan', [laporanTeknisiController::class, 'index']);
 
+    Route::get('/statusupdate{id}', [laporanPelangganController::class, 'edit']);
+    Route::put('/statusupdate{id}/update', [laporanPelangganController::class, 'update']);
 
 });
 
