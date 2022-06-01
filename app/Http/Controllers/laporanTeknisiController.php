@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\teknisiLaporan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class laporanTeknisiController extends Controller
 {
@@ -15,9 +16,13 @@ class laporanTeknisiController extends Controller
     public function index()
     {
         //
-        return view('teknisi.laporan_teknisi' , [
-            'nama_dashboard' => 'Laporan Teknisi'
-        ]);
+        // return view('teknisi.laporan_teknisi' , [
+        //     'nama_dashboard' => 'Laporan Teknisi'
+        // ]);
+        // $laporan = pengaduan::all();
+        $laporan = teknisiLaporan::all();
+        return view('teknisi.laporan_teknisi', compact('laporan'),[
+            'nama_dashboard' => 'Data Pelanggan Laporan']);
         
     }
 
@@ -59,9 +64,14 @@ class laporanTeknisiController extends Controller
      * @param  \App\Models\teknisiLaporan  $teknisiLaporan
      * @return \Illuminate\Http\Response
      */
-    public function edit(teknisiLaporan $teknisiLaporan)
+    public function edit(teknisiLaporan $teknisiLaporan,$id)
     {
-        //
+        $id = DB::table('teknis')->where('id', $id)->first();
+        return view('teknisi.statuslaporan', [
+            
+            'id' => $id,
+            'nama_dashboard' => 'Update Nama Dashboard',
+        ]);
     }
 
     /**
@@ -71,9 +81,32 @@ class laporanTeknisiController extends Controller
      * @param  \App\Models\teknisiLaporan  $teknisiLaporan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, teknisiLaporan $teknisiLaporan)
+    public function update(Request $request, teknisiLaporan $teknisiLaporan,$id )
     {
-        //
+        $validaasi = $request->validate([
+            'kode_pengaduan' => 'required',
+            'nomer_pengaduan' => 'required',
+            // 'nama_pelapor' => 'required',
+            // 'alamat_pelapor' => 'required',
+            // 'notlp_pelapor' => 'required',
+            // 'alamat_email_pelapor' => 'required',
+            // 'keluhan_pelapor' => 'required|max:100',
+            // 'pekerjaan_pelapor' => 'required',
+            'status_laporan' => 'Required',
+        ]);
+        DB::table('teknis')->where('id', $request->id)->update([
+            'kode_pengaduan' => $request->kode_pengaduan,
+            'nomer_pengaduan' => $request->nomer_pengaduan,
+            // 'nama_pelapor' => $request->nama_pelapor,
+            // 'alamat_pelapor' => $alamat_pelapor,
+            // 'notlp_pelapor' => $request->notlp_pelapor,
+            // 'alamat_email_pelapor' => $request->alamat_email_pelapor,
+            // 'keluhan_pelapor' => $request->keluhan_pelapor,
+            // 'pekerjaan_pelapor' => $request->pekerjaan_pelapor,
+            'status_laporan' => $request->status_laporan,
+            'nama_teknisi' => $request->nama_teknisi,
+            ]);
+        return redirect('/teknisiLaporan')->with(['success' => 'Data telah Ditambahkan']);
     }
 
     /**

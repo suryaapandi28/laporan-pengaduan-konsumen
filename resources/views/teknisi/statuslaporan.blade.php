@@ -31,12 +31,20 @@
               </div>
               @enderror
             </div> 
+            <div class="mb-3">
+              <label for="nama_teknisi" class="form-label">Nama Teknisi</label>
+              <input type="text" class="form-control rounded-top @error('nama_teknisi') is-invalid @enderror" id="nama_teknisi"name="nama_teknisi" value="{{ $id->nama_teknisi }}">
+
+              @error('nama_pelapor')    
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div> 
 
             <div class="input-group mb-3">
               <input type="text" name="status_laporan" value="{{ $id->status_laporan }}" class="mx-auto" readonly>
                 <select class="form-select @error('status_laporan') is-invalid @enderror" name="status_laporan" id="status_laporan">
-                  <option value="belum_veritifikasi">belum_veritifikasi</option>
-                  <option value="terveritifikasi">terveritifikasi</option>
                   <option value="maintance">maintance</option>
                   <option value="selesai">selesai</option>
                   

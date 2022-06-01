@@ -19,6 +19,7 @@ class Laporan extends Model
         'notlp_pelapor',
         'alamat_email_pelapor',
         'keluhan_pelapor',
-        'pekerjaan_pelapor'
+        'pekerjaan_pelapor',
+        'status_laporan'
     ];
 }

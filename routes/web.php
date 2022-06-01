@@ -61,6 +61,9 @@ Route::group(['middleware' => ['auth','CekLevel:administrator']] , function() {
     Route::get('/statusupdate{id}', [laporanPelangganController::class, 'edit']);
     Route::put('/statusupdate{id}/update', [laporanPelangganController::class, 'update']);
 
+    Route::get('/statusupdate{id}', [laporanTeknisiController::class, 'edit']);
+    Route::put('/statusupdate{id}/update', [laporanTeknisiController::class, 'update']);
+
 });
 
 // Route admin - input cuman mengakses laporan teknisi dan pengajuan 

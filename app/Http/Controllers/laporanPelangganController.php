@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Laporan;
 use App\Models\pengaduan;
+use App\Models\teknisiLaporan;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
@@ -168,7 +169,8 @@ class laporanPelangganController extends Controller
     
     
         $validaasi = $request->validate([
-            // 'kode_pengaduan' => 'trim',
+            'kode_pengaduan' => 'required',
+            'nomer_pengaduan' => 'required',
             // 'nama_pelapor' => 'required',
             // 'alamat_pelapor' => 'required',
             // 'notlp_pelapor' => 'required',
@@ -179,8 +181,8 @@ class laporanPelangganController extends Controller
         ]);
      
         DB::table('pengaduans')->where('id', $request->id)->update([
-            // 'kode_pengaduan' => $request->kode_pengaduan,
-            // 'nomer_pengaduan' => $request->nomer_pengaduan,
+            'kode_pengaduan' => $request->kode_pengaduan,
+            'nomer_pengaduan' => $request->nomer_pengaduan,
             // 'nama_pelapor' => $request->nama_pelapor,
             // 'alamat_pelapor' => $alamat_pelapor,
             // 'notlp_pelapor' => $request->notlp_pelapor,
@@ -189,8 +191,21 @@ class laporanPelangganController extends Controller
             // 'pekerjaan_pelapor' => $request->pekerjaan_pelapor,
             'status_laporan' => $request->status_laporan,
             ]);
+            $checkLaporan = Laporan::where('id', $id)->first();
+            if($checkLaporan->status_laporan)
+            {
+                $data = [
+                    'kode_pengaduan' => $request->kode_pengaduan,
+                    'nomer_pengaduan' => $request->nomer_pengaduan,
+                    'status_laporan' => $request->status_laporan,
+                    'nama_teknisi' => 'surya',
+                ];
+                teknisiLaporan::create($data);
+                return redirect()->route('laporan.index')->with('succes','pengaduan Berhasil di Hapus');
+            }
             return redirect('/laporan')->with(['success' => 'Data telah Ditambahkan']);
 
+           
 
     }
 
